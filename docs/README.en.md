@@ -72,7 +72,7 @@ Using silent audio to obtain background execution time is not a suitable App Sto
 
 AIZU sends the selected activity name, description, image URL and start time to Discord. App Store queries go to Apple, and remote images are fetched from their hosts. Login credentials are stored in the device's Keychain. AIZU has no collection server or analytics service of its own.
 
-It does not read other apps' screens, documents or video titles, and does not request VPN, location or microphone access. Activities start through your selections or your Shortcuts automations. Report vulnerabilities [privately](https://github.com/aizuproject/AIZU/security/advisories/new), following the [security policy](../SECURITY.md).
+It does not read other apps' screens, documents or video titles, and does not request VPN, location or microphone access. Activities start through your selections or your Shortcuts automations. Report vulnerabilities [privately](https://github.com/aizuproject/AIZU/security/advisories/new), following the [security policy](../SECURITY.md). If GHSA is unavailable or you have another security-related inquiry, email [me@st4rain.com](mailto:me@st4rain.com).
 
 ## Contributing
 
