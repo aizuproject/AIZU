@@ -1,6 +1,6 @@
 # Development and setup
 
-This guide uses the Xcode scheme and bundle names retained from the original project. The user-facing application is AIZU.
+This guide uses AIZU for the generated Xcode project, scheme, and application target.
 
 ## Requirements
 
@@ -15,7 +15,7 @@ Use `xcode-select` or export `DEVELOPER_DIR` to select Xcode 27. The public CI u
 
 ```sh
 AIZU_WITHOUT_SDK=1 zsh scripts/generate.sh
-open iPadPresence.xcodeproj
+open AIZU.xcodeproj
 ```
 
 In **Product → Scheme → Edit Scheme → Run → Arguments**, add `--uitesting --ui-language en`. Use `ko`, `ja` or `zh-Hans` for the other languages. Run the Debug configuration on a simulator.

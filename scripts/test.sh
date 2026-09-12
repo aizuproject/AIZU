@@ -15,7 +15,7 @@ presence_build="${PRESENCE_BUILD_DIR:-$HOME/Library/Developer/Xcode/DerivedData/
 presence_result="artifacts/Tests-$(date +%Y%m%d-%H%M%S).xcresult"
 mkdir -p artifacts
 zsh scripts/generate.sh
-xcodebuild -project iPadPresence.xcodeproj -scheme iPadPresence \
+xcodebuild -project AIZU.xcodeproj -scheme AIZU \
   -destination "platform=iOS Simulator,id=$presence_simulator" \
   -derivedDataPath "$presence_build" -resultBundlePath "$presence_result" \
   ONLY_ACTIVE_ARCH=YES test "$@"

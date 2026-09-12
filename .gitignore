@@ -13,6 +13,7 @@ __pycache__/
 *.pyc
 
 # Generated projects and local research are not part of the source release.
+AIZU.xcodeproj/
 iPadPresence.xcodeproj/
 Research/
 design/

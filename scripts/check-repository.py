@@ -16,7 +16,7 @@ def check(condition, message):
 files = subprocess.check_output(['git', 'ls-files', '-z'], cwd=root).decode().split('\0')
 for name in filter(None, files):
     p = root / name
-    check(not name.startswith(('artifacts/', 'Research/', 'design/', 'iPadPresence.xcodeproj/', 'Vendor/discord_partner_sdk.xcframework/')), f'Private/generated file: {name}')
+    check(not name.startswith(('artifacts/', 'Research/', 'design/', 'AIZU.xcodeproj/', 'Vendor/discord_partner_sdk.xcframework/')), f'Private/generated file: {name}')
     check(name != 'Config/Local.xcconfig', 'Local configuration must not be committed')
     check(p.stat().st_size < 8 * 1024 * 1024, f'File exceeds 8 MiB: {name}')
     if p.suffix in {'.png', '.gif', '.jpg', '.jpeg'}:

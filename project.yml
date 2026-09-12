@@ -1,4 +1,4 @@
-name: iPadPresence
+name: AIZU
 options:
   developmentLanguage: en
   bundleIdPrefix: app.aizuproject
@@ -20,7 +20,7 @@ settings:
     SWIFT_STRICT_CONCURRENCY: complete
     ENABLE_USER_SCRIPT_SANDBOXING: YES
 targets:
-  iPadPresence:
+  AIZU:
     type: application
     platform: iOS
     sources:
@@ -47,7 +47,7 @@ targets:
     platform: iOS
     sources: [iPadPresenceTests]
     dependencies:
-      - target: iPadPresence
+      - target: AIZU
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
@@ -58,15 +58,15 @@ targets:
     platform: iOS
     sources: [iPadPresenceUITests]
     dependencies:
-      - target: iPadPresence
+      - target: AIZU
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
 schemes:
-  iPadPresence:
+  AIZU:
     build:
       targets:
-        iPadPresence: all
+        AIZU: all
     run:
       config: Debug
     test:

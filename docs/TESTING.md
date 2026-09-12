@@ -24,7 +24,7 @@ The README uses actual iPad simulator screens. The GIF is a sequence of three ca
 ```sh
 AIZU_WITHOUT_SDK=1 zsh scripts/generate.sh
 TEST_RUNNER_AIZU_CAPTURE_README=1 xcodebuild \
-  -project iPadPresence.xcodeproj -scheme iPadPresence \
+  -project AIZU.xcodeproj -scheme AIZU \
   -destination 'platform=iOS Simulator,id=YOUR_IPAD_SIMULATOR_ID' \
   -resultBundlePath artifacts/readme.xcresult \
   -only-testing:iPadPresenceUITests/ReadmeCaptureTests test

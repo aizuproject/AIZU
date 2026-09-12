@@ -42,10 +42,10 @@ cd AIZU
 brew install xcodegen
 export DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer
 AIZU_WITHOUT_SDK=1 zsh scripts/generate.sh
-open iPadPresence.xcodeproj
+open AIZU.xcodeproj
 ```
 
-`iPadPresence`スキームとシミュレータを選択します。実際のDiscord接続には、自分のDiscord Application IDと公式Social SDKが必要です。[接続設定](DEVELOPMENT.md)を完了してから、プロジェクトを再生成してください。
+`AIZU`スキームとシミュレータを選択します。実際のDiscord接続には、自分のDiscord Application IDと公式Social SDKが必要です。[接続設定](DEVELOPMENT.md)を完了してから、プロジェクトを再生成してください。
 
 ## バックグラウンド動作と制限
 
