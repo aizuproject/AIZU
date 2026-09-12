@@ -72,7 +72,7 @@ open iPadPresence.xcodeproj
 
 AIZU 将所选活动的名称、描述、图片 URL 和开始时间发送到 Discord。App Store 搜索词会发送给 Apple；显示远程图片时会连接图片所在的服务器。登录凭据保存在设备的 Keychain 中。AIZU 没有自建的数据收集服务器或分析服务。
 
-应用不会读取其他应用的屏幕、文档或视频标题，也不使用 VPN、位置或麦克风权限。活动由你手动选择，或通过自行设置的快捷指令启动。安全漏洞请通过[私密渠道](https://github.com/aizuproject/AIZU/security/advisories/new)报告，不要提交公开 issue。详情见[安全政策](../SECURITY.md)。
+应用不会读取其他应用的屏幕、文档或视频标题，也不使用 VPN、位置或麦克风权限。活动由你手动选择，或通过自行设置的快捷指令启动。安全漏洞请通过[私密渠道](https://github.com/aizuproject/AIZU/security/advisories/new)报告，不要提交公开 issue。如无法使用 GHSA，或有其他安全相关咨询，请发送邮件至 [me@st4rain.com](mailto:me@st4rain.com)。详情见[安全政策](../SECURITY.md)。
 
 ## 参与开发
 

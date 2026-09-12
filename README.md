@@ -72,7 +72,7 @@ open iPadPresence.xcodeproj
 
 선택한 활동의 이름·설명·이미지 URL·시작 시각을 Discord에 전송합니다. App Store 검색어는 Apple에 전달되며, 원격 이미지를 표시하면 해당 이미지 호스트에 연결합니다. 로그인 정보는 기기의 Keychain에 저장합니다. AIZU 자체의 수집 서버나 분석 도구는 없습니다.
 
-다른 앱의 화면·문서·영상 제목을 읽지 않으며 VPN, 위치, 마이크 권한을 사용하지 않습니다. 활동은 직접 선택하거나 사용자가 만든 단축어로 시작합니다. 보안 취약점은 공개 이슈 대신 [비공개로 제보](https://github.com/aizuproject/AIZU/security/advisories/new)해 주세요. 자세한 범위는 [보안 정책](SECURITY.md)에 있습니다.
+다른 앱의 화면·문서·영상 제목을 읽지 않으며 VPN, 위치, 마이크 권한을 사용하지 않습니다. 활동은 직접 선택하거나 사용자가 만든 단축어로 시작합니다. 보안 취약점은 공개 이슈 대신 [비공개로 제보](https://github.com/aizuproject/AIZU/security/advisories/new)해 주세요. GHSA를 이용하기 어렵거나 그 밖의 보안 문의가 있다면 [me@st4rain.com](mailto:me@st4rain.com)으로 연락해 주세요. 자세한 범위는 [보안 정책](SECURITY.md)에 있습니다.
 
 ## 개발에 참여하기
 
