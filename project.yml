@@ -1,7 +1,7 @@
 name: iPadPresence
 options:
   developmentLanguage: en
-  bundleIdPrefix: app.ipadpresence
+  bundleIdPrefix: app.aizuproject
   deploymentTarget:
     iOS: '17.0'
   xcodeVersion: '27.0'
@@ -30,8 +30,8 @@ targets:
       Release: Config/App.xcconfig
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: app.ipadpresence.app
-        PRODUCT_NAME: iPadPresence
+        PRODUCT_BUNDLE_IDENTIFIER: app.aizuproject.aizu
+        PRODUCT_NAME: AIZU
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: iPadPresence/Resources/Info.plist
         SWIFT_OBJC_BRIDGING_HEADER: iPadPresence/Integration/DiscordBridge.h
@@ -51,6 +51,8 @@ targets:
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: '$(BUILT_PRODUCTS_DIR)/AIZU.app/AIZU'
+        BUNDLE_LOADER: '$(TEST_HOST)'
   iPadPresenceUITests:
     type: bundle.ui-testing
     platform: iOS

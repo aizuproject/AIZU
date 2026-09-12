@@ -63,7 +63,7 @@ private extension Data {
 }
 
 enum TokenKeychain {
-    private static let service = "app.ipadpresence.oauth"
+    private static let service = "app.aizuproject.aizu.oauth"
     private static func query(account: String) -> [String: Any] {
         [kSecClass as String: kSecClassGenericPassword,
          kSecAttrService as String: service, kSecAttrAccount as String: account]
