@@ -4,9 +4,7 @@
 <p align="center"><strong>0.1.0 Beta</strong> · SwiftUI · iOS / iPadOS 17+ · MIT</p>
 <p align="center"><a href="../README.md">한국어</a> · <a href="README.en.md">English</a> · <strong>日本語</strong> · <a href="README.zh-CN.md">简体中文</a></p>
 
-AIZUは、アプリや作業をDiscord Rich Presenceで共有するiPhone・iPadアプリです。ゲームだけでなく、画像編集、動画視聴、自分で名前を付けた作業も登録できます。共有する内容と開始・終了のタイミングは、自分で選びます。
-
-現在は、**ソースからビルドして個人の端末にインストールするベータ版**です。共有中のバックグラウンド接続を無音オーディオで維持するため、App Store向けには提供していません。AIZUを強制終了した後の接続維持にも対応していません。
+AIZUは、ゲーム、アプリ、任意の作業をDiscord Rich Presenceで共有する個人インストール用のベータ版です。
 
 ![iPadのAIZUアクティビティ画面](media/activity.png)
 
@@ -28,8 +26,6 @@ AIZUは、アプリや作業をDiscord Rich Presenceで共有するiPhone・iPad
 
 ![共有の開始と終了](media/sharing.gif)
 
-*画像はiPadシミュレータで撮影した実際の画面です。UI言語は韓国語です。GIFは待機・共有・終了の各画面を順番に表示します。アカウントやDiscordへの通信を使わないプレビューモードであり、他のDiscordクライアントでの表示を撮影したものではありません。*
-
 共有後にアプリを開くには、アクティビティ設定でアプリURLまたはショートカット名を指定します。インストール済みアプリや起動URLは自動検出しません。アプリの開閉に連動するオートメーションについては、[開発ガイド](DEVELOPMENT.md)を参照してください。
 
 | 手動で登録 | 言語と接続の設定 |
@@ -38,7 +34,7 @@ AIZUは、アプリや作業をDiscord Rich Presenceで共有するiPhone・iPad
 
 ## ビルド
 
-macOS、iOSシミュレータのランタイムを含むXcode 27ベータ、[XcodeGen](https://github.com/yonaskolb/XcodeGen)が必要です。実機へのインストールにはAppleの開発用署名も必要です。最小デプロイ対象はiOS/iPadOS 17.0ですが、iOS 17実機での動作は未検証です。
+macOS、iOSシミュレータのランタイムを含むXcode 27ベータ、[XcodeGen](https://github.com/yonaskolb/XcodeGen)が必要です。実機へのインストールにはAppleの開発用署名も必要です。
 
 ```sh
 git clone https://github.com/aizuproject/AIZU.git
@@ -49,24 +45,11 @@ AIZU_WITHOUT_SDK=1 zsh scripts/generate.sh
 open iPadPresence.xcodeproj
 ```
 
-`iPadPresence`スキームとシミュレータを選択します。Xcodeプロジェクトは生成物のため、リポジトリには含めません。UIを確認する場合は、Debugスキームの起動引数に`--uitesting --ui-language ja`を追加してください。このモードはメモリ上のサンプルデータを使用し、保存済みアカウントの読み込みやDiscordへの送信は行いません。
-
-実際のDiscord接続には、自分のDiscord Application IDと公式Social SDKが必要です。[接続設定](DEVELOPMENT.md)を完了してから、プロジェクトを再生成してください。SDKバイナリや認証情報はリポジトリに含まれていません。
+`iPadPresence`スキームとシミュレータを選択します。実際のDiscord接続には、自分のDiscord Application IDと公式Social SDKが必要です。[接続設定](DEVELOPMENT.md)を完了してから、プロジェクトを再生成してください。
 
 ## バックグラウンド動作と制限
 
-無音オーディオは共有と同時に開始し、共有の終了と同時に停止します。他の音楽アプリ、通話、音声出力先の変更、ネットワーク状況などによって中断される場合があります。追加の電力を消費しますが、バッテリー使用量の定量測定はまだ行っていません。
-
-| 状況 | 現在の動作 |
-| --- | --- |
-| ホーム画面への移動、アプリの切り替え、画面ロック | オーディオの実行が許可されている間、接続の維持を試みます。 |
-| アクセスガイド | 一部の実機で動作を確認しています。すべての端末・アプリでの継続動作は保証しません。 |
-| AIZUの強制終了 | 接続を維持できません。 |
-| アプリを閉じた際のオートメーションが届かない | 共有が残る場合があります。AIZUで手動終了してください。 |
-
-「Discordに送信済み」はSDKが成功を返したことを示し、相手の画面での表示を確認したことを意味しません。アクティビティはAIZUのDiscordアプリケーションを通じて送信され、選んだアプリの公式連携になるわけではありません。AIZUはDiscordやAppleの公式製品ではありません。
-
-無音オーディオでバックグラウンド実行時間を確保する現在の設計は、App Store配布には適していません。[Appleの審査ガイドライン2.5.4](https://developer.apple.com/app-store/review/guidelines/#software-requirements)も参照してください。
+無音オーディオは共有と同時に開始し、共有の終了と同時に停止します。他の音声アプリ、通話、ネットワークの変化で中断する場合があり、AIZUを強制終了すると接続も終了します。
 
 ## プライバシーとセキュリティ
 
@@ -77,8 +60,6 @@ open iPadPresence.xcodeproj
 ## 開発への参加
 
 不具合は再現手順と端末・OS・AIZUのバージョンを添えて、[イシュー](https://github.com/aizuproject/AIZU/issues/new/choose)で報告してください。変更は作業ブランチからプルリクエストで提出します。[貢献ガイド](../CONTRIBUTING.md)、[検証範囲](TESTING.md)、[変更履歴](../CHANGELOG.md)を参照してください。
-
-CIはDiscord SDKや認証情報を使わず、リポジトリの検査とシミュレータテストを実行する構成です。CodeQLの対象はPythonツールとGitHub Actionsです。Swiftコードのセキュリティレビューや実機検証を代替するものではありません。
 
 ## ライセンス
 

@@ -4,9 +4,7 @@
 <p align="center"><strong>0.1.0 Beta</strong> · SwiftUI · iOS / iPadOS 17+ · MIT</p>
 <p align="center"><a href="../README.md">한국어</a> · <a href="README.en.md">English</a> · <a href="README.ja.md">日本語</a> · <strong>简体中文</strong></p>
 
-AIZU 是一款通过 Discord Rich Presence 分享应用和任务的 iPhone、iPad 应用。除了游戏，你还可以添加图片编辑、视频观看，或自行命名的任务。分享什么，以及何时开始、结束，都由你决定。
-
-当前版本为**从源码构建并安装到个人设备上的测试版**。分享期间，应用使用无声音频维持后台连接，因此不作为 App Store 版本提供。强制退出 AIZU 后，连接无法继续保持。
+AIZU 是一款供个人安装的测试版，用于通过 Discord Rich Presence 分享游戏、应用和自定义任务。
 
 ![iPad 上的 AIZU 活动页面](media/activity.png)
 
@@ -28,8 +26,6 @@ AIZU 是一款通过 Discord Rich Presence 分享应用和任务的 iPhone、iPa
 
 ![开始和停止分享](media/sharing.gif)
 
-*以上媒体来自 iPad 模拟器中的实际界面，界面语言为韩语。GIF 依次展示待机、分享和结束状态。拍摄使用预览模式，不读取账号，也不向 Discord 发送数据；它并非其他 Discord 客户端的显示录像。*
-
 如需在分享后打开应用，请在活动设置中指定应用 URL 或快捷指令名称。AIZU 不会自动检测已安装的应用或它们的启动 URL。打开、关闭应用时的自动化配置详见[开发指南](DEVELOPMENT.md)。
 
 | 手动添加活动 | 语言与连接设置 |
@@ -38,7 +34,7 @@ AIZU 是一款通过 Discord Rich Presence 分享应用和任务的 iPhone、iPa
 
 ## 构建
 
-需要 macOS、包含 iOS 模拟器运行时的 Xcode 27 测试版，以及 [XcodeGen](https://github.com/yonaskolb/XcodeGen)。安装到实体设备还需要配置 Apple 开发签名。最低部署目标为 iOS/iPadOS 17.0，但尚未验证 iOS 17 实体设备上的运行情况。
+需要 macOS、包含 iOS 模拟器运行时的 Xcode 27 测试版，以及 [XcodeGen](https://github.com/yonaskolb/XcodeGen)。安装到实体设备还需要配置 Apple 开发签名。
 
 ```sh
 git clone https://github.com/aizuproject/AIZU.git
@@ -49,24 +45,11 @@ AIZU_WITHOUT_SDK=1 zsh scripts/generate.sh
 open iPadPresence.xcodeproj
 ```
 
-选择 `iPadPresence` scheme 和一个模拟器。Xcode 项目文件由脚本生成，不提交到仓库。只查看界面时，可在 Debug scheme 的启动参数中添加 `--uitesting --ui-language zh-Hans`。该模式使用内存中的示例数据，不读取已保存的账号，也不向 Discord 发送活动。
-
-实际连接 Discord 需要你自己的 Discord Application ID 和官方 Social SDK。请先完成[连接配置](DEVELOPMENT.md)，再重新生成项目。仓库不包含 SDK 二进制文件或登录凭据。
+选择 `iPadPresence` scheme 和一个模拟器。实际连接 Discord 需要你自己的 Discord Application ID 和官方 Social SDK。请先完成[连接配置](DEVELOPMENT.md)，再重新生成项目。
 
 ## 后台行为与限制
 
-无声音频随分享自动开始，并在分享结束时停止。其他音乐应用、通话、音频输出切换及网络状态都可能导致中断。后台运行会消耗额外电量，目前尚未进行电池使用量的定量测量。
-
-| 场景 | 当前行为 |
-| --- | --- |
-| 返回主屏幕、切换应用或锁屏 | 在系统允许音频运行期间尝试维持连接。 |
-| 引导式访问 | 已在部分实体设备上确认可运行，但不保证所有设备和应用都能持续保持连接。 |
-| 强制退出 AIZU | 无法继续维持连接。 |
-| 未收到关闭应用的自动化事件 | 活动可能继续显示，需要在 AIZU 中手动停止。 |
-
-“已发送到 Discord”表示 SDK 返回成功，不代表已确认其他用户客户端上的显示情况。活动通过 AIZU 的 Discord 应用发送，并不等同于所选应用的官方集成。AIZU 不是 Discord 或 Apple 的官方产品。
-
-当前通过无声音频获取后台运行时间的设计不适合作为 App Store 分发方案。相关要求见 [Apple 审核指南 2.5.4](https://developer.apple.com/app-store/review/guidelines/#software-requirements)。
+无声音频随分享自动开始，并在分享结束时停止。其他音频应用、通话和网络变化都可能导致中断；强制退出 AIZU 会结束连接。
 
 ## 隐私与安全
 
@@ -77,8 +60,6 @@ AIZU 将所选活动的名称、描述、图片 URL 和开始时间发送到 Dis
 ## 参与开发
 
 报告问题时，请在 [issue](https://github.com/aizuproject/AIZU/issues/new/choose) 中提供复现步骤，以及设备、系统和 AIZU 版本。代码修改应从工作分支通过 PR 提交。请参阅[贡献指南](../CONTRIBUTING.md)、[测试范围](TESTING.md)和[更新日志](../CHANGELOG.md)。
-
-CI 配置为在不使用 Discord SDK 或凭据的情况下执行仓库检查和模拟器测试。CodeQL 检查 Python 工具和 GitHub Actions；这些检查不能替代 Swift 代码的安全审查或实体设备测试。
 
 ## 许可证
 
