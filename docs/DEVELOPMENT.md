@@ -54,15 +54,15 @@ Enable sharing in AIZU first. App-close events include switching to another app.
 ## Layout
 
 ```text
-iPadPresence/
+AIZU/
   App/           Application entry point and presence controller
   Domain/        Activities, sessions and stored state
   Services/      OAuth, transport, audio lifetime, search and localization
   Integration/   Discord C++ bridge and App Intents
   Views/         SwiftUI screens
   Resources/     Assets, localized strings and Info.plist
-iPadPresenceTests/       Unit and integration tests
-iPadPresenceUITests/     UI tests and opt-in documentation capture
+AIZUTests/               Unit and integration tests
+AIZUUITests/             UI tests and opt-in documentation capture
 scripts/                 Project generation, testing and repository tools
 ```
 

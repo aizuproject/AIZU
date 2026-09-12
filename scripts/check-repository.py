@@ -33,7 +33,7 @@ check('DISCORD_APPLICATION_ID = 0' in (root / 'Config/App.xcconfig').read_text()
 translations = {}
 for code in ['ko', 'en', 'ja', 'zh-Hans']:
     table = {}
-    for line in (root / f'iPadPresence/Resources/{code}.lproj/Localizable.strings').read_text().splitlines():
+    for line in (root / f'AIZU/Resources/{code}.lproj/Localizable.strings').read_text().splitlines():
         if not line.strip() or line.startswith('//'):
             continue
         match = re.fullmatch(r'("(?:\\.|[^"\\])*")\s*=\s*("(?:\\.|[^"\\])*");', line)

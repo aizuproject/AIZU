@@ -36,7 +36,7 @@ jobs:
       - name: Install XcodeGen
         run: command -v xcodegen >/dev/null || brew install xcodegen
       - name: Build and test without Discord credentials or SDK
-        run: zsh scripts/test.sh -only-testing:iPadPresenceTests -only-testing:iPadPresenceUITests/PresenceUITests -only-testing:iPadPresenceUITests/LanguageUITests
+        run: zsh scripts/test.sh -only-testing:AIZUTests -only-testing:AIZUUITests/PresenceUITests -only-testing:AIZUUITests/LanguageUITests
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: failure()
         with:

@@ -24,7 +24,7 @@ targets:
     type: application
     platform: iOS
     sources:
-      - path: iPadPresence
+      - path: AIZU
     configFiles:
       Debug: Config/App.xcconfig
       Release: Config/App.xcconfig
@@ -33,8 +33,8 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: app.aizuproject.aizu
         PRODUCT_NAME: AIZU
         GENERATE_INFOPLIST_FILE: NO
-        INFOPLIST_FILE: iPadPresence/Resources/Info.plist
-        SWIFT_OBJC_BRIDGING_HEADER: iPadPresence/Integration/DiscordBridge.h
+        INFOPLIST_FILE: AIZU/Resources/Info.plist
+        SWIFT_OBJC_BRIDGING_HEADER: AIZU/Integration/DiscordBridge.h
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         MARKETING_VERSION: '0.1.0'
         CURRENT_PROJECT_VERSION: '1'
@@ -42,10 +42,10 @@ targets:
     dependencies:
       - sdk: AuthenticationServices.framework
       - sdk: Security.framework
-  iPadPresenceTests:
+  AIZUTests:
     type: bundle.unit-test
     platform: iOS
-    sources: [iPadPresenceTests]
+    sources: [AIZUTests]
     dependencies:
       - target: AIZU
     settings:
@@ -53,10 +53,10 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         TEST_HOST: '$(BUILT_PRODUCTS_DIR)/AIZU.app/AIZU'
         BUNDLE_LOADER: '$(TEST_HOST)'
-  iPadPresenceUITests:
+  AIZUUITests:
     type: bundle.ui-testing
     platform: iOS
-    sources: [iPadPresenceUITests]
+    sources: [AIZUUITests]
     dependencies:
       - target: AIZU
     settings:
@@ -72,6 +72,6 @@ schemes:
     test:
       config: Debug
       targets:
-        - iPadPresenceTests
-        - iPadPresenceUITests
+        - AIZUTests
+        - AIZUUITests
       gatherCoverageData: true
