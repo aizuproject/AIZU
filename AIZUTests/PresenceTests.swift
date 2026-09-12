@@ -1,6 +1,6 @@
 import XCTest
 import UIKit
-@testable import iPadPresence
+@testable import AIZU
 
 final class PresenceStateTests: XCTestCase {
     func testCustomArtworkStaysLocalAndRemoteURLReachesPayload() throws {

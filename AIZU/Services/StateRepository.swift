@@ -11,7 +11,7 @@ final class FileStateRepository: StateRepository {
     let file: URL
     init(file: URL? = nil) {
         self.file = file ?? URL.applicationSupportDirectory
-            .appending(path: "iPadPresence", directoryHint: .isDirectory)
+            .appending(path: "AIZU", directoryHint: .isDirectory)
             .appending(path: "state.json")
     }
     func load() throws -> PresenceState {

@@ -6,9 +6,9 @@ Select Xcode 27, then run:
 
 ```sh
 AIZU_WITHOUT_SDK=1 zsh scripts/test.sh \
-  -only-testing:iPadPresenceTests \
-  -only-testing:iPadPresenceUITests/PresenceUITests \
-  -only-testing:iPadPresenceUITests/LanguageUITests
+  -only-testing:AIZUTests \
+  -only-testing:AIZUUITests/PresenceUITests \
+  -only-testing:AIZUUITests/LanguageUITests
 ```
 
 The script selects an available iPhone simulator. Set `PRESENCE_SIMULATOR_ID` for a specific device and `PRESENCE_BUILD_DIR` for a custom DerivedData path. Results are written to ignored `artifacts/`.
@@ -24,10 +24,10 @@ The README uses actual iPad simulator screens. The GIF is a sequence of three ca
 ```sh
 AIZU_WITHOUT_SDK=1 zsh scripts/generate.sh
 TEST_RUNNER_AIZU_CAPTURE_README=1 xcodebuild \
-  -project iPadPresence.xcodeproj -scheme iPadPresence \
+  -project AIZU.xcodeproj -scheme AIZU \
   -destination 'platform=iOS Simulator,id=YOUR_IPAD_SIMULATOR_ID' \
   -resultBundlePath artifacts/readme.xcresult \
-  -only-testing:iPadPresenceUITests/ReadmeCaptureTests test
+  -only-testing:AIZUUITests/ReadmeCaptureTests test
 xcrun xcresulttool export attachments \
   --path artifacts/readme.xcresult --output-path artifacts/readme-frames
 python3 scripts/build-readme-media.py artifacts/readme-frames

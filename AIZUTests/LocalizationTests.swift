@@ -1,5 +1,5 @@
 import XCTest
-@testable import iPadPresence
+@testable import AIZU
 
 final class LocalizationTests: XCTestCase {
     func testPreferredLanguageOrderAndOverride() {

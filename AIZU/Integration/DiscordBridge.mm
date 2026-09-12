@@ -7,7 +7,7 @@
 #endif
 
 static NSError *PresenceError(NSString *message) {
-    return [NSError errorWithDomain:@"iPadPresence.Discord" code:1 userInfo:@{NSLocalizedDescriptionKey: message}];
+    return [NSError errorWithDomain:@"AIZU.Discord" code:1 userInfo:@{NSLocalizedDescriptionKey: message}];
 }
 
 #if PRESENCE_DISCORD_SDK

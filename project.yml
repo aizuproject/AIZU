@@ -1,7 +1,7 @@
-name: iPadPresence
+name: AIZU
 options:
   developmentLanguage: en
-  bundleIdPrefix: app.ipadpresence
+  bundleIdPrefix: app.aizuproject
   deploymentTarget:
     iOS: '17.0'
   xcodeVersion: '27.0'
@@ -20,21 +20,21 @@ settings:
     SWIFT_STRICT_CONCURRENCY: complete
     ENABLE_USER_SCRIPT_SANDBOXING: YES
 targets:
-  iPadPresence:
+  AIZU:
     type: application
     platform: iOS
     sources:
-      - path: iPadPresence
+      - path: AIZU
     configFiles:
       Debug: Config/App.xcconfig
       Release: Config/App.xcconfig
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: app.ipadpresence.app
-        PRODUCT_NAME: iPadPresence
+        PRODUCT_BUNDLE_IDENTIFIER: app.aizuproject.aizu
+        PRODUCT_NAME: AIZU
         GENERATE_INFOPLIST_FILE: NO
-        INFOPLIST_FILE: iPadPresence/Resources/Info.plist
-        SWIFT_OBJC_BRIDGING_HEADER: iPadPresence/Integration/DiscordBridge.h
+        INFOPLIST_FILE: AIZU/Resources/Info.plist
+        SWIFT_OBJC_BRIDGING_HEADER: AIZU/Integration/DiscordBridge.h
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         MARKETING_VERSION: '0.1.0'
         CURRENT_PROJECT_VERSION: '1'
@@ -42,34 +42,36 @@ targets:
     dependencies:
       - sdk: AuthenticationServices.framework
       - sdk: Security.framework
-  iPadPresenceTests:
+  AIZUTests:
     type: bundle.unit-test
     platform: iOS
-    sources: [iPadPresenceTests]
+    sources: [AIZUTests]
     dependencies:
-      - target: iPadPresence
+      - target: AIZU
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
-  iPadPresenceUITests:
+        TEST_HOST: '$(BUILT_PRODUCTS_DIR)/AIZU.app/AIZU'
+        BUNDLE_LOADER: '$(TEST_HOST)'
+  AIZUUITests:
     type: bundle.ui-testing
     platform: iOS
-    sources: [iPadPresenceUITests]
+    sources: [AIZUUITests]
     dependencies:
-      - target: iPadPresence
+      - target: AIZU
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
 schemes:
-  iPadPresence:
+  AIZU:
     build:
       targets:
-        iPadPresence: all
+        AIZU: all
     run:
       config: Debug
     test:
       config: Debug
       targets:
-        - iPadPresenceTests
-        - iPadPresenceUITests
+        - AIZUTests
+        - AIZUUITests
       gatherCoverageData: true

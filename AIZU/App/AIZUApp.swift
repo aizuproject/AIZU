@@ -2,7 +2,7 @@ import SwiftUI
 import AppIntents
 
 @main
-struct iPadPresenceApp: App {
+struct AIZUApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @State private var controller: PresenceController
     init() {

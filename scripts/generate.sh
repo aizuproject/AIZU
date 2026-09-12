@@ -6,7 +6,7 @@ if [[ "${AIZU_WITHOUT_SDK:-0}" != "1" && -d Vendor/discord_partner_sdk.xcframewo
   cat > .project-local.yml <<'EOF'
 include: project.yml
 targets:
-  iPadPresence:
+  AIZU:
     dependencies:
       - framework: Vendor/discord_partner_sdk.xcframework
         embed: true
