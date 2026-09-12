@@ -1,0 +1,45 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  repository:
+    name: Repository checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - run: python3 scripts/check-repository.py
+      - run: git diff --check
+      - name: Check workflow syntax and script tests
+        run: |
+          go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
+          python3 -m unittest discover -s scripts/tests -v
+  simulator:
+    name: iOS tests
+    runs-on: xcode-27
+    timeout-minutes: 30
+    env:
+      AIZU_WITHOUT_SDK: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Install XcodeGen
+        run: command -v xcodegen >/dev/null || brew install xcodegen
+      - name: Build and test without Discord credentials or SDK
+        run: zsh scripts/test.sh -only-testing:iPadPresenceTests -only-testing:iPadPresenceUITests/PresenceUITests -only-testing:iPadPresenceUITests/LanguageUITests
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: failure()
+        with:
+          name: simulator-test-results
+          path: artifacts/*.xcresult
+          retention-days: 7

@@ -1,0 +1,38 @@
+name: 버그 제보 / Bug report
+description: 재현 가능한 문제를 알려 주세요. / Report a reproducible problem.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: '보안 취약점은 공개 이슈에 올리지 말고 Security → Report a vulnerability를 이용해 주세요. Never include tokens or unredacted OAuth URLs.'
+  - type: textarea
+    id: problem
+    attributes:
+      label: 문제 / Problem
+      description: 기대한 동작과 실제 동작을 설명해 주세요. / Expected and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 재현 방법 / Steps to reproduce
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: AIZU 버전 / Version
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 기기·OS·Xcode / Device, OS and Xcode
+      description: 실제 기기인지 시뮬레이터인지도 적어 주세요. / Include whether this is a simulator.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 추가 정보 / Additional context
+      description: 백그라운드·사용법 유도 여부, 함께 재생한 오디오, 개인정보를 제거한 로그나 화면을 첨부해 주세요. / Include background state and other audio if relevant; redact logs and screenshots.

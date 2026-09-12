@@ -1,0 +1,4 @@
+"${applicationName}에서 ${game} 활동 시작" = "${applicationName}で${game}のアクティビティを開始";
+"${applicationName}에서 ${game} 활동 종료" = "${applicationName}で${game}のアクティビティを終了";
+"${applicationName} 공유 설정" = "${applicationName}の共有を設定";
+"${applicationName} 현재 활동 종료" = "${applicationName}で現在のアクティビティを終了";

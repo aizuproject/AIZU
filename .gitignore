@@ -1,0 +1,33 @@
+.DS_Store
+.build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.project-local.yml
+Config/Local.xcconfig
+Vendor/discord_partner_sdk.xcframework/
+artifacts/*
+!artifacts/.gitkeep
+
+__pycache__/
+*.pyc
+
+# Generated projects and local research are not part of the source release.
+iPadPresence.xcodeproj/
+Research/
+design/
+FEASIBILITY_REVIEW.ko.md
+IPADOS27_CAPTURE_FEASIBILITY.ko.md
+VALIDATION.ko.md
+TODO.ko.md
+Vendor/License-Notices.txt
+Vendor/SDK-PROVENANCE.txt
+*.xcresult/
+*.ipa
+*.p12
+*.mobileprovision
+.env
+.env.*
+
+# Superseded local icon prototype.
+/scripts/make-icon.swift

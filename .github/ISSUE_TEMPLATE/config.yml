@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 비공개 보안 제보 / Private security report
+    url: https://github.com/aizuproject/AIZU/security/advisories/new
+    about: 인증·개인정보 관련 취약점은 비공개로 제보해 주세요. / Report vulnerabilities privately.
