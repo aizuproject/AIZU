@@ -21,19 +21,19 @@ for name in filter(None, files):
     check(p.stat().st_size < 8 * 1024 * 1024, f'File exceeds 8 MiB: {name}')
     if p.suffix in {'.png', '.gif', '.jpg', '.jpeg'}:
         continue
-    content = p.read_text(errors='replace')
+    content = p.read_text(encoding='utf-8', errors='replace')
     check(not re.search(r'/' + r'Users/[^/\s]+/', content), f'Personal machine path: {name}')
     check(not re.search(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{50,}', content), f'Possible credential: {name}')
 
-spec = (root / 'project.yml').read_text()
-version = (root / 'VERSION').read_text().strip()
+spec = (root / 'project.yml').read_text(encoding='utf-8')
+version = (root / 'VERSION').read_text(encoding='utf-8').strip()
 check(re.fullmatch(r'\d+\.\d+\.\d+(?:-[a-z]+\.\d+)?', version) is not None, 'Invalid VERSION')
 check(f"MARKETING_VERSION: '{version.split('-')[0]}'" in spec, 'Bundle version differs from VERSION')
-check('DISCORD_APPLICATION_ID = 0' in (root / 'Config/App.xcconfig').read_text(), 'Public config must use application ID 0')
+check('DISCORD_APPLICATION_ID = 0' in (root / 'Config/App.xcconfig').read_text(encoding='utf-8'), 'Public config must use application ID 0')
 translations = {}
 for code in ['ko', 'en', 'ja', 'zh-Hans']:
     table = {}
-    for line in (root / f'AIZU/Resources/{code}.lproj/Localizable.strings').read_text().splitlines():
+    for line in (root / f'AIZU/Resources/{code}.lproj/Localizable.strings').read_text(encoding='utf-8').splitlines():
         if not line.strip() or line.startswith('//'):
             continue
         match = re.fullmatch(r'("(?:\\.|[^"\\])*")\s*=\s*("(?:\\.|[^"\\])*");', line)
@@ -49,7 +49,7 @@ for code, table in translations.items():
     check(table.keys() == translations['ko'].keys(), f'Missing localization keys: {code}')
 for name in filter(lambda n: n.endswith('.md'), files):
     p = root / name
-    for target in re.findall(r'!?\[[^\]]*\]\(([^\s)]+)(?:\s+"[^"]*")?\)', p.read_text()):
+    for target in re.findall(r'!?\[[^\]]*\]\(([^\s)]+)(?:\s+"[^"]*")?\)', p.read_text(encoding='utf-8')):
         if target.startswith(('https:', 'http:', '#', 'mailto:')):
             continue
         destination = unquote(target.split('#')[0])
